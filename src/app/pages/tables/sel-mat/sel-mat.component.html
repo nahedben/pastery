@@ -1,0 +1,48 @@
+<div>
+<nb-card>
+    <div><button (click)="backClick()"  nbButton class="nbButton">Retour</button></div>
+    <nb-card-body>
+        <div style="color:red;"> Article à éditer :</div>
+      <div><h3>{{ctt?.name}}</h3></div>
+    </nb-card-body>
+</nb-card>
+<nb-card>
+<nb-card-body>
+    <table>
+        <tr>
+            <td><strong>{{selTitle[2]}}<a>: </a></strong></td>
+            <td>{{ctt?.unit}}</td>
+        </tr>
+   <tr>
+       <td><strong>{{selTitle[3]}}<a>: </a></strong></td>
+        <td>{{ctt?.quantity}}</td>
+        <td><input  type="number" oninput="if(value > 999999) alert('Entre non Valide')" nbInput fullWidth status="basic" placeholder="Nouveau Stock" #newQty (keyup.enter)="setQty(newQty.value)"></td>
+        <div>  <button nbButton class="nbButton" (click)="setQty(newQty.value)">valider</button></div>
+    </tr>
+    <tr>
+        <td><strong>{{selTitle[6]}}<a>: </a></strong></td>
+        <td>{{ctt?.depot?.name}}</td>
+        <td>
+            <nb-select placeholder="Select Depot" [(ngModel)]="depotId">
+               <nb-option  *ngFor="let dp of dpts" [value]="dp.id" >{{dp.name}}</nb-option>
+            </nb-select>
+        </td>
+        <div>  <button nbButton class="nbButton" (click)="getDeptByIdSelec()">valider</button></div>
+    </tr>
+   <!-- <tr>
+        <td><strong>{{selTitle[7]}}<a>: </a></strong></td>
+        <td>{{ctt?.famille?.name}}</td>
+        <td>
+            <nb-select placeholder="Select Famille" [(ngModel)]="famId">
+               <nb-option *ngFor="let fm of fams" [value]="fm.id" >{{fm.name}}</nb-option>
+            </nb-select>
+        </td>
+        <div>  <button nbButton class="nbButton" (click)="setMatIdFamSelec()">valider</button></div>
+    </tr> -->
+   <!-- <div><strong>{{selTitle[6]}}<a>: </a></strong>{{ctt.depot.name}}</div>  -->
+    <!--   <div><strong>{{selTitle[7]}}<a>: </a></strong>{{ct?.famille.name}}</div> -->
+    </table>
+    </nb-card-body>
+    
+</nb-card>
+</div>

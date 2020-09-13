@@ -1,0 +1,110 @@
+
+// @import '~bootstrap/scss/mixins/breakpoints';
+// @import '~@nebular/theme/styles/global/breakpoints';
+
+// @import '../../../@theme/styles/themes';
+
+// @include nb-install-component() {
+//   button + button {
+//     margin-left: 2rem;
+//   }
+
+//   @include media-breakpoint-down(xxl) {
+//     nb-card-body {
+//       display: flex;
+//     }
+
+//     button {
+//       flex: 1;
+//       padding: 0.8rem;
+//     }
+//   }
+
+//   @include media-breakpoint-down(is) {
+//     nb-card-body {
+//       display: block;
+//     }
+
+//     button {
+//       + button {
+//         margin-left: 0;
+//       }
+
+//       width: 100%;
+//       display: block;
+//       margin-bottom: 2rem;
+//       padding: 0.75rem;
+//     }
+//   }
+// }
+input.prod{
+  width: 160px
+}
+:host {
+    display: block;
+    max-height: 25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .card-row {
+    display: flex;
+    margin: 0 -0.5rem;
+  }
+  
+  .card-col {
+    flex: 1 0 calc(50% - 1rem);
+    margin: 0 0.5rem;
+
+
+  }
+  .col-4{
+    margin:0 20px;
+    margin-bottom: 20px;
+  }
+  .cadre{
+  height: 180px;
+  width: 180px;
+  margin:0 15px;
+  padding: 0.5em;
+  }
+  .imageCardre{
+    height: 100px;
+  }
+  img.imageCardre:hover{
+    border: thick;
+    opacity: 0.4;
+    height: 105px
+
+  }
+
+  .title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1em 1em 1em 1em;
+  }
+  span.info{
+    font-size: x-small;
+    font-weight: bold;
+    color: green;
+    // margin-top: 5px;
+    white-space: nowrap;
+    
+  }
+  span.info:hover{
+    color: purple;
+    font-size: small;
+  }
+
+   button.retour{
+     width:100px;     
+   }
+
+   .button{
+     background-color: none;
+     border-style: none;
+   }
+
+ 
+
+  

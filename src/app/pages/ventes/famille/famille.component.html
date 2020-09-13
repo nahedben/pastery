@@ -1,0 +1,19 @@
+
+<nb-card>
+    
+    <div class="title"><h6> Produit par Groupes </h6></div>
+    <div class="row show-grid">
+      <div class="col-4 col-sm-2" *ngFor="let fam of familles">
+         
+        <div *ngIf="fam?.name!==null" > 
+
+            <nb-card class="cadre">
+              <h6>{{fam?.name}}</h6>
+                          <img src="{{firstPartUrl}}{{fam?.name}}.jpg"  class="imageCardre" (click)="onclicked($event,fam.id)">
+                          
+                      <a class="info">Nombre Produit :{{fam?.nbrProd}}</a>
+            </nb-card>
+       </div>
+      </div>
+    </div>
+</nb-card> 

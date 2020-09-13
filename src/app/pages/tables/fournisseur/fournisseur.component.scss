@@ -1,0 +1,138 @@
+@import '../../../@theme/styles/themes';
+
+@include nb-install-component() {
+  .buttons-row {
+    margin: -0.5rem;
+  }
+
+  button[nbButton] {
+    margin: 0.5rem;
+  }
+
+  .action-icon {
+    @include nb-ltr(margin-right, 0.5rem);
+    @include nb-rtl(margin-left, 0.5rem);
+  }
+
+  .actions-card {
+    height: 8rem;
+  }
+}
+
+ul { 
+    list-style : none ;
+}
+li{
+    display: inline-block;
+    color: blue($color: #000000)
+}
+nav.navigation-menu { 
+    background-color : #444;
+    color : #fff;
+    height : 50px;
+    width:100%
+}
+ul { 
+    list-style : none ;
+}
+li{
+    display: inline-block;
+    color: blue($color: #000000)
+}
+nav.navigation-menu { 
+    background-color : #444;
+    color : #fff;
+    height : 50px;
+    display:inline-block;
+    // position: relative;
+    // left:-310px
+}
+nav.navigation-menu > ul > li > a {
+    color : #FAB301  ;
+    // display:inline-block;
+    // position: relative;
+    // left:-370px
+    text-decoration: none;
+}
+nav.navigation-menu > ul > li > a:hover{
+    color: #917521;
+    
+}
+.colored-column-basic {
+    background-color: rgb(177, 177, 168);
+    
+}
+.name a{
+    color: #383221;
+    
+    font-size:small;
+    font-weight:bolder;
+    
+    // font-weight:bolder;
+}
+.lien{
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+}
+.name >a:hover{
+    color:#6d6651
+    
+}
+div.name> a{
+    margin:0px 10px 10px 0px;
+    font-size: medium;
+     padding: 10px;
+    text-decoration:none;
+    
+}
+th{
+   margin: 20px;
+   padding:10px;
+   width: 40%;
+
+}
+td{
+    position: left;
+    margin: 10px;
+   padding:10px;
+   width: 40%;
+   font-size:smaller;
+}
+td.title{
+    position: center;
+    margin: 10px;
+   padding:10px;
+   width: 15%;
+   font-size:smaller;
+   font-weight:bolder;
+}
+button{
+    border-radius: 1em;
+    height: 30px;
+    width: 100px;
+    border-style: hidden;
+    font-weight:bolder;
+
+}
+button.remove{
+    background-color: rgb(241, 79, 67);
+    position:relative;
+    left:140px;
+    right: 10px;
+    
+}
+button.edit{
+    background-color:rgb(171, 218, 215)
+}
+.filter{
+    background-color : #444;
+    margin-bottom: 20px;
+
+}
+.input{
+    background-color : rgb(139, 88, 88);
+}
+
+
+

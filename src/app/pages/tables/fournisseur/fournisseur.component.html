@@ -1,0 +1,93 @@
+<nb-layout>
+        
+    <nb-layout-header subheader [hidden]='x'>
+     <nav class="navigation-menu">
+         <ul>
+             <li><a [routerLink]="['lst-mat-fourn/',id]" >Liste Matières Première</a></li>
+             &nbsp;&nbsp;<li><a [routerLink]="['lst-br-fourn/',id]" >Liste Bons Receptions</a></li>
+            
+         </ul>     
+     </nav>
+    </nb-layout-header>
+
+  
+    <nb-layout-column  class="colored-column-basic">
+        <nb-layout-header class='filter' subheader>
+            <div class='input'><input type ='text' [(ngModel)]="listFilter" placeholder="recherche par nom" nbInput/></div>
+        </nb-layout-header>
+        <h5 class="grid-h">Liste de Fournisseurs</h5>
+
+       <div class="row show-grid" >
+          <div class="col-8 col-12 lien" *ngFor='let frn of filtredFourns '>
+                   <div class="name"><a (click)="onclicked($event,frn.id)" >{{frn.name}}</a></div>
+          </div>
+          
+       </div>
+
+        <div class="col-md-12 col-lg-12 col-xxxl-6">              
+          <div class="buttons-row">
+            <button  nbButton [routerLink]="['add-four/']">
+              Ajouter
+            </button>
+          </div>          
+        </div>     
+    </nb-layout-column>
+   
+    <nb-layout-column  class="colored-column-primary" [hidden]='x'>
+        
+        <h6 class="grid-h">{{fr?.name}}</h6>
+        <table>
+            
+            <tbody>
+                <tr>
+                  <td class='title'>Contact :</td>
+                  <td>{{fr?.contactName}}</td>
+                </tr> 
+                <tr>
+                    <td class='title'>Telephone :</td>
+                    <td>{{fr?.phone}}</td>
+                </tr> 
+                <tr>
+                    <td class='title'>Email :</td>
+                    <td>{{fr?.email}}</td>
+                </tr> 
+                <tr>
+                    <td class='title'>Adresse :</td>
+                    <td>{{fr?.address}}</td>
+                </tr> 
+                <tr>
+                    <td class='title'>Compte :</td>
+                    <td>{{fr?.compte}}</td>
+                </tr> 
+                <tr>
+                    <td class='title'>Email :</td>
+                    <td>{{fr?.email}}</td>
+                </tr> 
+              <tr>
+                  <td class='title'>Tax :</td>
+                  <td>{{fr?.tax}}</td>
+              </tr> 
+              <tr>
+                <td class='title'>Date Debut Travail:</td>
+                <td>{{fr?.dateCreation}}</td>
+            </tr> 
+              <tr>
+                  <td class='title'>Note :</td>
+                  <td>{{fr?.note}}</td>
+              </tr> 
+
+            </tbody>
+        </table>
+       <nb-card>
+         <nb-card-body>
+            <div class="buttons-row" >
+                <button  status="primary" nbButton class="edit" [routerLink]="['modif-fourn/',fr.id]" (click)="onEdit()">
+                  Modifier
+                </button>
+                <button  status="danger" nbButton class="remove" (click)="onRemove($event)" >Supprimer</button>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      
+    </nb-layout-column>
+  </nb-layout>

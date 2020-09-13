@@ -1,0 +1,87 @@
+<div class="lists row">
+  <div class="col-md-12 col-lg-6 col-xxxl-6">
+    <nb-card class="list-card">
+      <nb-card-header>
+        <h1>
+          <strong class="text-info">Les ordres de production (
+            {{ orderProduction.slice(0, end).length }} /
+            {{ orderProduction.length }} )</strong>
+        </h1>
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item class="list-item" *ngFor="let orderP of orderProduction | slice: 0:end">
+            <strong class="text-info">{{ orderP.recette.produit.name }}</strong>
+
+            <div>
+              <strong>Quantité : {{ orderP.quantity }}</strong>
+            </div>
+            <div>
+              <strong *ngIf='orderP.dateLancement !== null'>débuter : {{ orderP.dateLancement | date: "M/d/yy h:mm a" }}</strong>
+              <strong *ngIf='orderP.dateLancement === null'>en attente</strong>
+            </div>
+            <div>
+              <button nbButton [status]="btnStartStatus" [shape]="btnStartShape" [size]="btnStartSize" ghost
+                (click)="startOrder(orderP)" *ngIf="!orderP.debutProd && !orderP.prodFinish">
+                Débuter
+              </button>
+              <button nbButton [status]="btnEndStatus" [shape]="btnEndShape" [size]="btnEndSize" ghost
+                (click)="finishOrder(orderP)" *ngIf="orderP.debutProd && !orderP.prodFinish">
+                Terminer
+              </button>
+            </div>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+      <nb-card-footer style="width: 100%; margin-left: 270px" *ngIf="end < orderProduction.length">
+        <button nbButton [status]="btnStartStatus" [shape]="btnStartShape" [size]="btnStartSize" ghost
+          (click)="handleShowMoreBtn('order')">
+          Afficher plus
+        </button>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+  <div class="col-md-12 col-lg-6 col-xxxl-6">
+    <nb-card class="list-card">
+      <nb-card-header class="row">
+        <div class="col-md-9">
+          <h1>
+            <strong class="text-info">Historique des ordres (
+              {{ historyOrderProduction.slice(0, endHist).length }} /
+              {{ historyOrderProduction.length }} )</strong>
+          </h1>
+        </div>
+       
+      </nb-card-header>
+      <nb-card-body>
+        <nb-list>
+          <nb-list-item class="list-item" *ngFor="let orderP of historyOrderProduction | slice: 0:endHist">
+            <div class="item-values">
+              <strong class="text-info">{{
+                orderP.recette.produit.name
+              }}</strong>
+            </div>
+            <div class="item-values">
+              <strong>Quantité : {{ orderP.quantity }}</strong>
+            </div>
+            <div class="item-values">
+              <strong>terminer :
+                {{ orderP.sortieProd | date: "M/d/yy h:mm a" }}</strong>
+            </div>
+            <div class="item-values">
+              <strong>tps prod :
+                {{ orderP.tempsPrd }} min</strong>
+            </div>
+          </nb-list-item>
+        </nb-list>
+      </nb-card-body>
+
+      <nb-card-footer style="width: 100%; margin-left: 270px" *ngIf="endHist < historyOrderProduction.length">
+        <button nbButton [status]="btnStartStatus" [shape]="btnStartShape" [size]="btnStartSize" ghost
+          (click)="handleShowMoreBtn('history')">
+          Afficher plus
+        </button>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>

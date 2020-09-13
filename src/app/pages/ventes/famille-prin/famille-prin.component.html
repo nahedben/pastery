@@ -1,0 +1,13 @@
+<ngx-facture [lstLignFacture]="lstLignFacture"
+    (removeligneFactureId)="receivedIdHandler($event)"
+    (initialiseListLgnFacture)="receivedListLgnFactureHandler($event)"></ngx-facture>
+
+<ngx-famille  (sendIdToprinc)="IdsendedHandler($event)" (affichHandlerY)="afficheClickedHandlerY($event)"
+*ngIf="!y" ></ngx-famille>
+
+<ngx-lst-prd-fam  (affichHandlerYlstPrd)="afficheCLickedlstPrdY($event)" 
+[id]="id" *ngIf="y"
+
+(ajouteligneFacture)="addedLigneFacture($event)"></ngx-lst-prd-fam>
+
+<!-- (ajouterLgFactTolst)="addedLignFactureToList($event)" -->

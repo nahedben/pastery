@@ -1,0 +1,12 @@
+<nb-card>
+  <nb-card-header>
+    <h2>Ajout-Edit-Suprime Matiere Premiere</h2>
+  </nb-card-header>
+
+  <nb-card-body>
+    <ng2-smart-table  [settings]="settings"  [source]="matPrems" (createConfirm)="onCreateConfirm($event)" (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onEditConfirm($event); onEditConfirm2($event)">
+    </ng2-smart-table>
+    
+
+  </nb-card-body>
+</nb-card>

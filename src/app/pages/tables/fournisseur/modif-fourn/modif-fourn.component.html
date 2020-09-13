@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-lg-8">
+      <nb-card>
+        <nb-card-header>Modifier info Fournisseur <button (click)="backClick()" status="primary" nbButton class="retour" > Retour</button></nb-card-header> 
+        <nb-card-body>
+            <form #fournForm="ngForm"    novalidate>
+                <!-- {{fournForm.value | json}}
+                <br> -->
+                <label for="name"><span >*</span>Name:</label>
+                <input type="text" name="name" nbInput fullWidth placeholder="{{four.name}}" [(ngModel)]="four.name" required>
+                <label for="contactName"><span >*</span>Nom du Contact:</label>
+                 <input type="text" name="contactName" nbInput fullWidth placeholder="Nom du Contact" [(ngModel)]="four.contactName" required>
+
+                    <!-- <label for="dateCreation">Date Debut:</label>
+                    <input type="date" name="dateCreation" nbInput fullWidth [(ngModel)]="four.dateCreation" > -->
+
+                    <label for="email"><span >*</span>Email:</label>
+                    <input type="email" name="email" nbInput fullWidth placeholder="Email" [(ngModel)]="four.email" required>
+               
+                    <label for="phone"><span >*</span>Téléphone:</label>
+                    <input type="text" name="phone" nbInput fullWidth placeholder="Téléphone:" [(ngModel)]="four.phone" required>
+                    <label for="address"><span >*</span>Adresse:</label>
+                    <input type="text" name="address" nbInput fullWidth placeholder="Adresse:" [(ngModel)]="four.address" required>
+                    <label for="tax"><span >*</span>Taxe:</label>
+                    <input type="number" name="tax" nbInput fullWidth placeholder="Taxe:" [(ngModel)]="four.tax" required>
+                    <label for="note">Info Supplémentaires:</label>
+                    <input type="text" name="note" nbInput fullWidth placeholder="info Supplémentaires:" [(ngModel)]="four.note">
+                    <!-- <textarea type="text" rows="5" nbInput fullWidth shape="round"  placeholder="info Supplémentaires"[(ngModel)]="four.note"></textarea> -->
+           </form>
+        <div class="buttons-row">
+        <button [disabled]="!fournForm.valid" status="primary" nbButton class="edit" (click)="editFournisseur()">  Valider</button>
+       
+    </div>    
+    </nb-card-body>
+      </nb-card>
+    </div>

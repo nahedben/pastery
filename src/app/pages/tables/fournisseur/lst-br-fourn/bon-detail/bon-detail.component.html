@@ -1,0 +1,33 @@
+<h5 class="grid-h">BR Num: {{bonrecep.numBonRecep }}</h5> &nbsp;<span style="font-weight: bold;">date:&nbsp;</span>{{bonrecep.dateBr|date:'dd-MM-yyyy'}}&nbsp;<span style="font-weight: bold;">Fournisseur</span>{{bonrecep?.fournisseur?.name}}
+        <div class="table-responsive">
+          <table class="table table-bordered table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th> Quantité </th>
+                <th> Matière Première </th>
+                <th> Prix unitaire </th>
+                <th> Total </th>
+
+               
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr  *ngFor="let lg of lstLgbr; let  i= index">
+                <th class="text-nowrap" scope="row">{{1+i}}</th>
+                <td>{{lg?.quantity}}</td>
+                <td>{{lg?.matierepremier?.name}}</td>
+                <td>{{lg?.matierepremier?.purchaseUnitPrice}}&nbsp;DTN</td>
+                <td>{{lg?.total}}</td>                
+              </tr>
+              
+              <tr>Livreur:&nbsp;{{bonrecep.nomLivreur}}</tr>
+              <tr>Note:&nbsp;{{bonrecep?.note}}</tr>
+              
+              <tr>Montant HT:&nbsp;{{bonrecep?.montTotHt}}&nbsp;DTN</tr>
+              <tr>Montant TTC:&nbsp;{{bonrecep?.montTotTtc}}&nbsp;DTN</tr>
+            </tbody>
+          </table>
+
+        </div>

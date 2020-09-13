@@ -1,0 +1,49 @@
+:host {
+    display: block;
+    max-height: 25rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  
+  .card-row {
+    display: flex;
+    margin: 0 -0.5rem;
+  }
+  
+  .card-col {
+    flex: 1 0 calc(50% - 1rem);
+    margin: 0 0.5rem;
+
+
+  }
+  .col-4{
+    margin:0 20px;
+    margin-bottom: 20px;
+  }
+  .cadre{
+  height: 180px;
+  width: 180px;
+  margin:0 15px;
+  padding: 0.5em;
+  }
+  .imageCardre{
+    height: 100px;
+  }
+  img.imageCardre:hover{
+    border: thick;
+    opacity: 0.4;
+    height: 105px
+
+  }
+
+  .title{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 1em 1em 1em 1em;
+  }
+  a.info{
+    font-size: x-small;
+    font-weight: bold;
+    color: green;
+    margin-top: 5px;
+  }

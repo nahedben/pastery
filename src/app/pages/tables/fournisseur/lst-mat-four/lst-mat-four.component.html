@@ -1,0 +1,22 @@
+<div><nb-card>
+    <button (click)="onBack()" status="primary" nbButton class="retour" > Retour</button>
+</nb-card>
+</div>
+<div class="accordions-container row">
+    <div class="accordion-container col-md-12 col-lg-6 col-xxxl-6">
+      <nb-card>
+        <nb-card-header><h5>Liste de Matières Premières</h5></nb-card-header>
+      </nb-card>
+  
+      <nb-accordion>
+        <nb-accordion-item #item *ngFor="let mat of mats">
+
+          <nb-accordion-item-header>
+            <h6>{{mat.name}}</h6>
+          </nb-accordion-item-header>
+          <nb-accordion-item-body>
+           <a>Prix :<span>{{mat.purchaseUnitPrice}}</span></a>
+           &nbsp;<a>;Stock :{{mat.quantity}}&nbsp;{{mat.unit}}</a>
+          </nb-accordion-item-body>
+
+        </nb-accordion-item>

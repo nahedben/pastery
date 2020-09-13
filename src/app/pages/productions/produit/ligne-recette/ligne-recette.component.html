@@ -1,0 +1,34 @@
+<form >
+  
+<td>
+ 
+    {{ligneRecette.id }}
+  </td>
+  <td>
+    <select
+      [(ngModel)]="ligneRecette.matierepremier"
+      [name]="'matprem'+ligneRecette.id"
+      class="form-control"
+      required
+    >
+      <option
+        *ngFor="let matPrem of matierePremier"
+        [ngValue]="matPrem"
+        >{{ matPrem.name }} ({{matPrem.unit}})</option
+      >
+    </select>
+  </td>
+
+  <td>
+    <input
+      type="number"
+      placeholder="consommation"
+      [name]="'consommation'+ligneRecette.id"
+      required
+      nbInput
+       class="form-control"
+      [(ngModel)]="ligneRecette.consommation"
+    />
+  </td>
+
+</form>

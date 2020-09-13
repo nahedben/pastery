@@ -1,0 +1,29 @@
+<h5 class="grid-h">Détails Facture</h5>
+<div class="table-responsive">
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th> Quantité </th>
+        <th> Produit </th>
+        <th> Prix unitaire </th>
+        <th> Total </th>
+
+       
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr  *ngFor="let lg of lstLgFct; let  i= index">
+        <th class="text-nowrap" scope="row">{{1+i}}</th>
+        <td>{{lg?.quantity}}</td>
+        <td>{{lg?.produit?.name}}</td>
+        <td>{{lg?.produit?.unitPrice}}&nbsp;DTN</td>
+        <td>{{lg?.totalPrice}}</td>                
+      </tr>
+      
+      <tr>Montant TTC:&nbsp;{{facture?.totalPriceTtc}}&nbsp;DTN</tr>
+    </tbody>
+  </table>
+
+</div>

@@ -1,0 +1,50 @@
+<!-- <button (click)="onBack()" status="primary" nb button *ngIf=t> retour</button> -->
+
+    
+<nb-layout>
+    <!-- <nb-layout-header *ngIf=t>
+        <nb-card>
+            <nb-card-body class="example-items-rows">
+        <button (click)="onBack()" status="primary" nbbutton *ngIf=t> retour</button>
+        <button (click)="onDelete($event)" status="danger" nbbutton *ngIf=t> supprimer</button>
+            </nb-card-body>
+    </nb-card>
+    </nb-layout-header> -->
+            <nb-layout-column>
+            <div class="accordions-container row">
+                <div class="accordion-container col-md-12 col-lg-12 col-xxxl-12">
+                <nb-card>
+                    <nb-card-header><h5>Liste de Factures</h5></nb-card-header>
+                </nb-card>
+            
+                <nb-accordion>
+                    <nb-accordion-item *ngFor="let fct of lstfctsorted" >
+
+                        <nb-accordion-item-header>
+                            <h6>Date:{{fct.dateFacture|date:'dd-MM-yyyy'}}&nbsp;&nbsp;Client tél:&nbsp;{{fct?.client?.phone}}&nbsp;&nbsp;Nom:&nbsp;{{fct?.client?.nom}}</h6>
+                    </nb-accordion-item-header>
+                    <nb-accordion-item-body>
+                        <a>Montant total:<span>{{fct.totalPriceTtc}}&nbsp;DNT;&nbsp;
+
+                        </span></a>
+                        &nbsp;<a>Type de Payement :{{fct.typePayment}}</a>&nbsp;&nbsp;
+                        <!-- <a href="#" style="font-weight: bold;">details</a> -->
+                        <button (click)="details(fct)" status="primary" nb button *ngIf=!t > details</button>
+                        <button (click)="onDelete(fct.id)" status="danger" nbbutton > supprimer</button>
+                    </nb-accordion-item-body>
+
+                </nb-accordion-item>
+                </nb-accordion>
+                </div>
+                </div>
+            </nb-layout-column>
+
+        <nb-layout-column>
+                <div *ngIf=t>
+                    <ngx-fact-detail  [facture]="facture"></ngx-fact-detail>
+                    <button (click)="onBack()" status="primary" nbbutton> retour</button>
+                    
+                </div>
+         </nb-layout-column>
+</nb-layout>
+      

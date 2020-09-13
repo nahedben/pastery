@@ -1,0 +1,40 @@
+@import '../../../@theme/styles/themes';
+
+
+@include nb-install-component() {
+  .list-card {
+    nb-card-header {
+      border-bottom: none;      
+    }
+
+    nb-card-body {
+      padding: 0;
+    }
+  }
+}
+
+button{
+  border-radius: 1em;
+  height: 30px;
+  width: 100px;
+  border-style: hidden;
+  font-weight:bolder;
+  position: relative;
+  top: 10px;
+
+}
+button.retour{
+border-radius: 1em;
+height: 30px;
+width: 100px;
+border-style: hidden;
+font-weight:bolder;
+position: relative;
+left: 280px;
+top:0px
+
+}
+button:hover{
+border-style: solid;
+}
+

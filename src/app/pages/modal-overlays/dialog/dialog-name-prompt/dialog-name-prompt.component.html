@@ -1,0 +1,10 @@
+<nb-card>
+  <nb-card-header>Entrer La Quantité</nb-card-header>
+  <nb-card-body>
+    <input #qty nbInput placeholder="quantité">
+  </nb-card-body>
+  <nb-card-footer>
+    <button class="cancel" nbButton status="danger" (click)="cancel()">Annuler</button>
+    <button nbButton status="success" (click)="submit(qty.value)">envoyer</button>
+  </nb-card-footer>
+</nb-card>

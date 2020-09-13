@@ -1,0 +1,122 @@
+<ngx-addproduct *ngIf="openProductForm" [produitToEdit]="produitToEdit" ></ngx-addproduct>
+
+<nb-card>
+  <nb-card-body>
+<div class="row show-grid">
+  <div class="col-md-9">
+    <h1 class="text-info">liste des produits ( {{ produits.length }} )</h1>
+  </div>
+
+  <div class="col-md-3 align-self-center float-right">
+    <button nbButton hero [status]="statuses" (click)="openFormHandler()">
+      {{ajouterProduitBtnLabel}}
+    </button>
+  </div>
+</div>
+
+<div class="row show-grid">
+  <div class="col-md-4" *ngFor="let prod of produits">
+    <nb-card size="medium">
+      <div class="picture" style.background-image="url({{ prod.photo }})"></div>
+
+      <div class="details">
+        <div class="text-center"><strong>{{ prod.produit.name }}</strong></div>
+        <div class="row show-grid">
+          <div class="col-md-4">
+            <div class="text-info"><strong>Quantité</strong></div>
+            <div class=" text-primary">{{ prod.produit.quantity }}</div>
+          </div>
+       
+          <div class="col-md-4">
+            <div class="text-info"><strong>prix unit</strong></div>
+            <div class=" text-primary">{{ prod.produit.unitPrice }}</div>
+          </div>
+          <div class="col-md-4">
+            <div class="text-info"><strong>Famille</strong></div>
+            <div class="text-primary">{{ prod.produit.famille.name }}</div>
+          </div> 
+        </div>
+        <div class="row show-grid"> 
+          <div class="col-md-6 offset-md-3" *ngIf="!prod.showRecette">
+            <button
+            nbButton
+            [status]="btnRecetteStatus"
+            [shape]="btnRecetteShape"
+            [size]="btnRecetteSize"
+            ghost
+            (click)='showRecetteHandler(prod)'
+          >
+         voir recette
+          </button>
+          </div>
+          <div class="col-md-6 offset-md-3" *ngIf="prod.showRecette">
+            <button
+            nbButton
+            [status]="btnCloseRecetteStatus"
+            [shape]="btnCloseRecetteShape"
+            [size]="btnCloseRecetteSize"
+            ghost
+            (click)='closeRecetteHandler(prod)'
+          >
+         fermer recette
+          </button>
+          </div>
+          </div>
+          <div *ngIf='prod.showRecette'>
+          <div class="text-center"><strong>{{prod.designation}}</strong></div>
+          <div class="text-center"><strong>Recette pour : {{prod.recettePour}}</strong></div>
+          <nb-list>
+            <nb-list-item *ngFor='let ligneRecette of prod.ligneRecette'>
+              {{ligneRecette.matierepremier.name}} &nbsp;{{ligneRecette.consommation}}&nbsp; {{ligneRecette.matierepremier.unit}}
+            </nb-list-item>
+          </nb-list>
+        </div>
+      </div>
+
+      <nb-card-footer>
+        <nb-actions size="medium" fullWidth>
+          <nb-action [ngStyle]="{'cursor': 'pointer'}" (click)="editerAction(prod)">
+            <nb-icon class="action-icon" icon="settings-2-outline" ></nb-icon>
+            <span>Editer</span>
+          </nb-action></nb-actions
+        >
+      
+        <button
+          nbButton
+          [status]="btnComanderStatus"
+          [shape]="btnComanderShape"
+          [size]="btnComanderSize"
+          ghost
+          (click)="openWindow(contentTemplate,prod)"
+        >
+          O.P
+        </button>
+      </nb-card-footer>
+    </nb-card>
+  </div>
+</div>
+  </nb-card-body>
+</nb-card>
+<ng-template #contentTemplate let-data>
+  <input
+  type="number"
+  placeholder="nombre des unités"
+  class="form-control"
+  name="quantity"
+  required
+  nbInput
+  [(ngModel)]="quantite"
+  #quantity="ngModel"
+  [status]="quantity.invalid ? 'danger' : 'success'"
+/>
+<button
+nbButton
+[status]="btnComanderStatus"
+[shape]="btnComanderShape"
+[size]="btnComanderSize"
+ghost
+(click)="orderProdHandler(data.produit)"
+>
+Valider
+</button>
+</ng-template>

@@ -1,0 +1,55 @@
+b-card-body {
+    overflow: visible;
+    padding-top: 0;
+  
+    > * {
+      margin-top: 1rem;
+    }
+  }
+  
+  .full-name-inputs,
+  .validation-checkboxes {
+    display: flex;
+    margin: 0 -0.5rem;
+  
+    > * {
+      margin: 0 0.5rem;
+    }
+  }
+  
+  .checkbox-radio {
+    display: flex;
+  }
+  
+  .demo-items {
+    flex: 1 0 33%;
+  }
+
+  span{
+    color:orange; 
+    font-weight:smaller;
+  }
+  button{
+    border-radius: 1em;
+    height: 30px;
+    width: 100px;
+    border-style: hidden;
+    font-weight:bolder;
+    position: relative;
+    top: 10px;
+
+}
+button.retour{
+  border-radius: 1em;
+  height: 30px;
+  width: 100px;
+  border-style: hidden;
+  font-weight:bolder;
+  position: relative;
+  left: 280px;
+  top:0px
+
+}
+button:hover{
+  border-style: solid;
+}

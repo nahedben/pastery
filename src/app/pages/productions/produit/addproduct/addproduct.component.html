@@ -1,0 +1,190 @@
+<nb-card>
+  <nb-card-header>
+    <h1 class="text-info text-center">
+      {{formTitle}}
+    </h1>
+  </nb-card-header>
+  <nb-card-body>
+    <nb-stepper #stepper [linear]="true">
+      <nb-step [stepControl]="produitForm" label="Produit">
+        <form #produitForm="ngForm" class="step-container">
+          <div class="row">
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inputName" class="label">nom de produit :</label>
+                <input type="text" placeholder="nom" class="form-control" name="name" required nbInput
+                  [(ngModel)]="produit.name" #name="ngModel" [status]="name.invalid ? 'danger' : 'success'" />
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inputStockLm" class="label">limite du stock :</label>
+                <input type="number" placeholder="Stock limit" class="form-control" name="stocklm" required nbInput
+                  [(ngModel)]="produit.stocklm" #stocklm="ngModel" [status]="stocklm.invalid ? 'danger' : 'success'" />
+              </div>
+            </div>
+
+            <div class="col-sm-4">
+              <div class="form-group">
+                <label for="inputStockLm" class="label">Prix ​​unitaire :</label>
+                <input type="number" placeholder="prix unitaire" class="form-control" name="unitPrice" required nbInput
+                  [(ngModel)]="produit.unitPrice" #unitPrice="ngModel"
+                  [status]="unitPrice.invalid ? 'danger' : 'success'" />
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="selectFm" class="label">selectionner une famille :</label>
+                <select [(ngModel)]="produit.SelectedFamily" class="form-control" name="famille" #famille="ngModel"
+                  required>
+                  <option *ngFor="let famille of familles" [ngValue]="famille">
+                    {{ famille.name }}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="selectFm" class="label">selectionner une unité :</label>
+                <select [(ngModel)]="produit.unit" class="form-control" name="unit" #unit="ngModel" required>
+                  <option *ngFor="let unit of units" [ngValue]="unit.value">
+                    {{ unit.label }}
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <button nbButton nbStepperNext class="float-right">next</button>
+        </form>
+      </nb-step>
+
+      <nb-step [stepControl]="recetteForm" label="Recette">
+        <form #recetteForm="ngForm" class="step-container">
+          <div class="row">
+            <div class="col-sm-6">
+              <label for="designationLabel" class="label">designation :</label>
+              <textarea class="form-control form-control-alternative" name="comment" [(ngModel)]="recette.designation"
+                #designation="ngModel" rows="4" cols="80" placeholder="designation du recette" required></textarea>
+            </div>
+            <div class="col-sm-6">
+              <label for="recettePourLabel" class="label">Recette par unité:</label>
+              <input type="number" placeholder="nombre des unités" class="form-control" name="recettePour" required
+                nbInput [(ngModel)]="recette.recettePour" #recettePour="ngModel"
+                [status]="recettePour.invalid ? 'danger' : 'success'" />
+            </div>
+          </div>
+          <div class="row show-grid">
+            <div class="col-md-6 offset-md-3">
+              <label for="ligneRecLabel" class="label">les Lignes Recette
+              </label>
+              <button nbButton ghost status="danger" (click)="removeLineHandler()">
+                <nb-icon [icon]="chevronL" pack="eva"></nb-icon>
+              </button>
+
+              <button nbButton ghost status="primary">
+                {{ lignesRecettes.length }}
+              </button>
+              <button nbButton ghost status="success" (click)="addNewLineHandler()">
+                <nb-icon [icon]="chevronR" pack="eva"></nb-icon>
+              </button>
+            </div>
+          </div>
+          <form [formGroup]="ligneRecetteForm">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Matiere premier</th>
+                  <th>consommation</th>
+                </tr>
+              </thead>
+
+              <tbody formArrayName="lignesRecettes">
+                <tr *ngFor="
+                    let lignRec of lignesRecettes.controls;
+                    let index = index
+                  " [formGroupName]="index">
+                  <td>
+                    {{ index + 1 }}
+                  </td>
+                  <td>
+                    <select class="form-control" formControlName="matierepremier">
+                      <option *ngFor="let matPrem of matierePremier" [value]="matPrem.id">
+                        {{ matPrem.name }} ({{ matPrem.unit }})
+                      </option>
+                    </select>
+                  </td>
+
+                  <td>
+                    <input type="number" placeholder="consommation" nbInput class="form-control"
+                      formControlName="consommation" />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+          <button nbButton nbStepperNext class="float-right">Finish</button>
+        </form>
+      </nb-step>
+      <nb-step [hidden]="true">
+        <div class="step-container">
+          <h3 class="text-center">Êtes-vous sûr d'ajouter se produit ?</h3>
+          <div class="row">
+            <div class="col-sm-6" align='center'>
+              <h4 class="text-info text-center">Produit</h4>
+              <table>
+                <tr>
+                  <th>Nom : </th>
+                  <td>{{produit.name}}</td>
+                </tr>
+                <tr>
+                  <th>Famille : </th>
+                  <td>{{produit.SelectedFamily?.name}}</td>
+                </tr>
+                <tr>
+                  <th>Stock Limite : </th>
+                  <td>{{produit.stocklm}} &nbsp; {{produit.unit}}</td>
+                </tr>
+                <tr>
+                  <th>Prix Unitaire : </th>
+                  <td>{{produit.unitPrice}}</td>
+                </tr>
+
+              </table>
+            </div>
+            <div class="col-sm-6" align="center">
+              <h4 class="text-info text-center">Recette</h4>
+              <table>
+                <tr>
+                  <th>Désignation : </th>
+                  <td>{{recette.designation}}</td>
+                </tr>
+                <tr>
+                  <th>Pour : </th>
+                  <td>{{recette.recettePour}}</td>
+                </tr>
+
+              </table>
+              <h4 class="text-info text-center">détails recette</h4>
+
+              <div  class="row" *ngFor="
+              let lignRec of ligneRecetteForm.value.lignesRecettes;
+              let index = index
+            ">
+                <span><strong> {{index+1}}) &nbsp;{{ matierePremName(lignRec.matierepremier) }}&nbsp;
+                    {{lignRec.consommation}} &nbsp;{{matierePremUnit(lignRec.matierepremier)}}</strong></span>
+              </div>
+            </div>
+          </div>
+          <!--    <button nbButton (click)="stepper.reset()" class="float-left">Try again</button> -->
+          <button nbButton (click)="addHandler()" class="float-right">
+            Confirmer
+          </button>
+        </div>
+      </nb-step>
+    </nb-stepper>
+  </nb-card-body>
+</nb-card>

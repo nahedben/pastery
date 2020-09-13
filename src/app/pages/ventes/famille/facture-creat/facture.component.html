@@ -1,0 +1,48 @@
+
+<div *ngIf="lstLignFacture.length!==0">    
+    <h4 *ngFor="let cl of client">Facture: {{FactureCree?.dateFacture|date:'dd-MM-yyyy'}}&nbsp;&nbsp;<span class="miniminse">Au nom de:{{cl.prenom}}&nbsp;{{cl.nom}}</span></h4>
+    <table> 
+        <thead>
+            <tr>
+                <th>Nom produit</th>
+                <th>Prix unitaire</th>
+                <th>Quantité</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let lgn of lstLignFacture">
+            <tr>
+                <td>{{lgn.produit.name}}</td>
+                <td>{{lgn.produit.unitPrice}}</td>
+                <td>{{lgn.quantity}}</td>
+                <td>{{lgn.totalPrice}}</td>
+                <td> <button nbButton size="tiny" status="danger" (click)="onDelete(lgn.id)" class="btn" [disabled]="sup">supprimer</button></td>
+            </tr>
+        </tbody>
+        <tr>
+            <td>
+                <button nbButton status="success" [disabled]="y" (click)="OnClick()">valider</button>
+            </td>
+            <td [hidden]="!y" > 
+                <form>
+                    <!-- #selItem -->
+                    <nb-select   [(selected)]="SelTypePay" placeholder="type Payement" default="ESPECE">
+                        <nb-option *ngFor="let item of lstTypePay"   value={{item}}>{{item}}</nb-option>
+                    </nb-select>
+                    <input placeholder=" tapez le numero de Téléphone" type="text"  #phone>
+                </form>
+
+                <button nbButton [disabled]="!SelTypePay||clicked" size="tiny" status="success" (click)="createFacture(phone.value)"> Ok</button> 
+            </td>
+                    
+            <td>Total Facture: {{total}}DTN</td>
+            <td><button nbButton status="success" (click)="valideFact()" *ngIf="validFact" [disabled]="r">Règlement</button></td>
+
+            <td> <button nbButton status="danger" [disabled]="!y||clickedCan" (click)="OnCancelClick(factureAss.id)">annuler</button></td>
+        </tr>
+    </table>
+    
+    
+   
+    
+</div>

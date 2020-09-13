@@ -1,0 +1,28 @@
+
+<nb-card class="button">
+    <button (click)="onBack()" status="primary" nbButton class="retour" > Retour</button>
+</nb-card>
+
+
+
+
+<nb-card>    
+    <div class="title"><h6> Les Produits </h6></div>
+    <!-- <h5 class="grid-h"></h5> -->
+    <div class="row show-grid">
+      <div class="col-4 col-sm-2" *ngFor="let prd of lstPrd">
+         
+        <div *ngIf="prd?.name!==null&&prd.quantity!==0&&prd.quantity>0" > 
+
+            <nb-card class="cadre"><h6>{{prd?.name}}</h6>
+                          <img src="#"  class="imageCardre">                             
+                      <a><span class="info">dispo:{{prd?.quantity}} &nbsp;{{prd?.unit| lowercase}}</span></a>
+<form>
+ <input nbInput type="number" placeholder="Quantité" class="prod" name ="qty" [(ngModel)]="qty">
+            </form> 
+            <button nbButton (click)="onsubmit($event,prd.id)">confirmer</button>
+                      </nb-card>
+       </div>
+      </div>
+    </div>
+</nb-card>  

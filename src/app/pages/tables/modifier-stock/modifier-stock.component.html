@@ -1,0 +1,38 @@
+
+<nb-card> 
+  
+    <nb-card-body class="example-items-rows">
+      <div>
+      <input type ='text' [(ngModel)]="listFilter" placeholder="entrer nom" nbInput/>
+    </div>   
+      <h6> Filter par Nom</h6>
+
+    </nb-card-body>
+  </nb-card>
+
+        <nb-card class="table">
+            <nb-card-body>
+                <div overflow-x:auto>
+                    <table  >
+                        <thead>
+                        <tr>
+                                <th style="width: 10%; height: 3%;"*ngFor="let Col of allColumns">{{Col}}</th>
+                            </tr>
+                        </thead>
+                        <ng-container>                           
+                            <thead *ngIf="matPrems && matPrems.length">
+                                <tr *ngFor="let data of filteredMats">
+                                    <!-- <td id="first"> {{data?.id}}</td> -->
+                                    <td><a [routerLink]="['sel-mat/', data.id]">{{data?.name}}</a></td>
+                                    <td>{{data?.unit}}</td>
+                                    <td>{{data?.quantity}}</td>
+                                    <td>{{data?.depot?.name}}</td>
+                                </tr>
+                            </thead>
+                        
+                        </ng-container>
+                  </table>
+              </div>
+            
+           </nb-card-body>
+      </nb-card>

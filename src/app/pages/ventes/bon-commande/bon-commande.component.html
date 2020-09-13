@@ -1,0 +1,37 @@
+<div *ngIf=t>
+    <ngx-ajout-bc></ngx-ajout-bc>
+    <button nbButton  outline status="warning" size="medium" (click)="onRetour2()">Quitter Ajout</button>
+</div>
+<div *ngIf=y>
+    <ngx-bc-details [bc]="bcmd" ></ngx-bc-details>
+    <button nbButton  outline status="primary" size="medium" (click)="onRetour()">Retour</button>
+    </div>
+
+<!-- [facture]="facture" -->
+<div class="col-md-12 col-lg-12 col-xxxl-12">
+    
+
+    <nb-card class="list-card" size="small">
+      <nb-card-header>Bons des Commandes
+        <nb-card-body class="example-items-rows" *ngIf=!y&&!t>
+            <button nbButton status="primary" size="medium" outline (click)="onAjouter()">Ajouter</button>
+            </nb-card-body>
+      </nb-card-header>
+      
+
+    
+        <nb-list>
+            <nb-list-item *ngFor="let bc of lstbc; let i =index">
+                
+            <a><span>Date Souahité:</span>&nbsp;{{bc?.dateSouhaite}}&nbsp;&nbsp;<span>Client:</span>&nbsp;{{bc?.client?.nom}}&nbsp;
+                {{bc?.client?.prenom}}&nbsp;&nbsp;<span>Tél:</span>&nbsp;{{bc?.client?.phone}}&nbsp;<span>Montant:</span>&nbsp;{{bc?.totalPric}}DTN</a>&nbsp;&nbsp;
+                <button class='ligne'nbButton size="tiny" status="info" (click)="onDetails(bc)">Details</button>&nbsp;
+                <button class='ligne' nbButton size="tiny" status="danger" (click)= "onSupprimer(bc.id)">Supprimer</button>
+            </nb-list-item>
+        </nb-list>
+
+       
+    </nb-card>
+  </div>
+
+

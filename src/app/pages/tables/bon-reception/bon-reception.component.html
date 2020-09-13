@@ -1,0 +1,76 @@
+<nb-layout>  
+    <nb-layout-column  class="colored-column-basic">
+        <nb-layout-header class='filter' subheader>
+            <div class='input'><input type ='text' [(ngModel)]="listFilter" placeholder="recherche par numero" nbInput/></div>
+        </nb-layout-header>
+        <h5 class="grid-h">Liste de Bon de Réceptions</h5>
+
+       <div class="row show-grid" *ngFor="let brc of filtredBr">
+          <div class="col-8 col-12 lien" >
+                   <div class=name><span style="font-weight:bolder;">N°Br:</span><a (click)="onclicked($event,brc.id)">{{brc.numBonRecep}}; de {{brc.fournisseur?.name}}</a></div>
+        </div>
+        </div>
+        <div class="col-md-12 col-lg-12 col-xxxl-6">              
+          <div class="buttons-row">
+            <button  nbButton [routerLink]="['add-bon-recep']" (click)="onClick()">
+              Ajouter
+            </button>
+          </div>
+    </div>
+     
+    </nb-layout-column>
+   
+    <nb-layout-column  class="colored-column-primary" [hidden]='x'>
+        
+        <h6 class="grid-h">N° Br:{{br.numBonRecep}}</h6>
+        <table [hidden]='x'>
+            
+            <tbody>
+                <tr>
+                <td class='title'>Date :</td>
+                <td>{{br?.dateBr}}</td>
+            </tr> 
+           
+            <tr>
+                <td class='title'>Montant total HT :</td>
+                <td>{{br?. montTotHt}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Montant total TTC :</td>
+                <td>{{br?.montTotTtc}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Valeur tax:</td>
+                <td>{{(br?.fournisseur?.tax/100)*br?. montTotHt|number}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Fournisseur:</td>
+                <td>{{br?.fournisseur?.name}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Livreur :</td>
+                <td>{{br?.nomLivreur}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Id Livreur :</td>
+                <td>{{br?.matLivreur}}</td>
+            </tr> 
+            <tr>
+                <td class='title'>Note :</td>
+                <td>{{br?.note}}</td>
+            </tr> 
+            </tbody>
+            </table> 
+            
+            <nb-card>
+                <nb-card-body>
+                    <div class="buttons-row" >
+                        <button  status="primary" nbButton class="edit" [routerLink]="['modif-bon-recep/',br.id]" (click)="onEdit()">
+                        Modifier
+                        </button>
+                        <button  status="danger" nbButton class="remove" (click)="onRemove($event)" >Supprimer</button>
+                    </div>
+                </nb-card-body>
+            </nb-card>
+    </nb-layout-column>
+  </nb-layout>

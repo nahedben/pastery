@@ -1,0 +1,21 @@
+<nb-card>
+<table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Produit</th>
+        <th>Quantité</th>
+     
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let lgbc of  lstLigBC; let index = index; ">
+        <td>{{index+1}}</td>
+       <td>{{lgbc?.produit?.name}}</td>
+       <td>{{lgbc?.quantity}}</td>
+       <td><button nbButton status='danger' size='tiny' (click)="removeLigne(lgbc)">supprimer</button></td>
+      </tr>
+    </tbody>
+  </table>
+</nb-card>
