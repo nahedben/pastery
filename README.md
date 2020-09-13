@@ -1,4 +1,4 @@
-# Intern + Angular
+# Angular front project
 
 This is a Pastery project PFE
 
